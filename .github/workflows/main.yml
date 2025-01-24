@@ -1,4 +1,4 @@
-name: workflow #test comment
+name: workflow
 
 on:
   push:
