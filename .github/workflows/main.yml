@@ -83,9 +83,10 @@ jobs:
       
       - name: Pull latest images
         run: |
-         echo "repository URI: '${{secrets.AWS_ECR_LOGIN_URI}}'"
-         echo "repository name: '${{secrets.ECR_REPOSITORY_NAME}}'"
-         echo "repository ID: '${{secrets.AWS_ACCESS_KEY_ID}}'"
+         echo "::add-mask::${{ secrets.AWS_ECR_LOGIN_URI }}"
+         echo "ECR URI: '${{ secrets.AWS_ECR_LOGIN_URI }}'"
+         echo "::add-mask::${{ secrets.ECR_REPOSITORY_NAME }}"
+         echo "ECR REPO: '${{ secrets.ECR_REPOSITORY_NAME }}'"
          docker pull ${{secrets.AWS_ECR_LOGIN_URI}}/${{ secrets.ECR_REPOSITORY_NAME }}:latest
          
       #- name: Stop and remove  container if running
